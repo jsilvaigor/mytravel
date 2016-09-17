@@ -1,0 +1,43 @@
+#
+# generated on 2016/09/16 09:20:11
+#
+# --table-start--
+dataClass=com.cedrotech.mytravel.entity.Country
+tableName=countries
+# --table-fields-start--
+# --field-start--
+fieldName=idCountry
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=idApi
+# --field-end--
+# --field-start--
+fieldName=iso
+# --field-end--
+# --field-start--
+fieldName=shortname
+# --field-end--
+# --field-start--
+fieldName=longname
+# --field-end--
+# --field-start--
+fieldName=callingCode
+# --field-end--
+# --field-start--
+fieldName=status
+# --field-end--
+# --field-start--
+fieldName=culture
+# --field-end--
+# --field-start--
+fieldName=visited
+dataPersister=BOOLEAN
+# --field-end--
+# --field-start--
+fieldName=date
+dataPersister=DATE_LONG
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

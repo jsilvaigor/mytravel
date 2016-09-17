@@ -40,12 +40,12 @@ public class VolleyHelper {
         getRequestQueue().add(rqt);
     }
 
-    //Interface de callback a ser utilizada para tratar retorno das requisições
+    //Callback interface to use on asynchronous requests
     public interface Callback<T> {
 
         void onSuccess(T obj);
-
         void onError(VolleyError error);
+
     }
 
 }
