@@ -6,11 +6,8 @@ dataClass=com.cedrotech.mytravel.entity.Country
 tableName=countries
 # --table-fields-start--
 # --field-start--
-fieldName=idCountry
-generatedId=true
-# --field-end--
-# --field-start--
-fieldName=idApi
+fieldName=id
+id=true
 # --field-end--
 # --field-start--
 fieldName=iso

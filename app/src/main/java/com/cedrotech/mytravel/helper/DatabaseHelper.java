@@ -15,13 +15,13 @@ import java.sql.SQLException;
 /**
  * Created by isilva on 16/09/16.
  */
-public class CountryDatabaseHelper extends OrmLiteSqliteOpenHelper {
+public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "mytravel.db";
     private static final int DATABASE_VERSION = 1;
     private Dao<Country, Integer> countryDao;
 
-    public CountryDatabaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
     }
 
@@ -48,7 +48,7 @@ public class CountryDatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     }
 
-    public Dao<Country, Integer> getDao() throws SQLException {
+    public Dao<Country, Integer> getCountryDao() throws SQLException {
 
         if (countryDao == null) {
             countryDao = getDao(Country.class);
@@ -56,5 +56,10 @@ public class CountryDatabaseHelper extends OrmLiteSqliteOpenHelper {
         return countryDao;
     }
 
+    @Override
+    public void close() {
+        super.close();
 
+        countryDao = null;
+    }
 }

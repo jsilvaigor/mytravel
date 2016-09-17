@@ -1,5 +1,8 @@
 package com.cedrotech.mytravel.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DataType;
@@ -12,15 +15,12 @@ import java.util.Date;
  * Created by isilva on 16/09/16.
  */
 @DatabaseTable(tableName = "countries")
-public class Country {
-
-    @DatabaseField(generatedId = true)
-    private Integer idCountry;
+public class Country implements Parcelable {
 
     @SerializedName("id")
     @Expose
-    @DatabaseField
-    private Integer idApi;
+    @DatabaseField(id = true)
+    private Integer id;
 
     @SerializedName("iso")
     @Expose
@@ -58,14 +58,14 @@ public class Country {
     @DatabaseField(dataType = DataType.DATE_LONG)
     private Date date;
 
+    //Default constructor
     public Country() {
     }
 
-    //Construtor Padrão
-    public Country(Integer idCountry, Integer idApi, String iso, String shortname, String longname,
+    //All atributes constructor
+    public Country(Integer id, String iso, String shortname, String longname,
                    String callingCode, Integer status, String culture, Boolean visited, Date date) {
-        this.idCountry = idCountry;
-        this.idApi = idApi;
+        this.id = id;
         this.iso = iso;
         this.shortname = shortname;
         this.longname = longname;
@@ -76,10 +76,10 @@ public class Country {
         this.date = date;
     }
 
-    //Construtor com apenas os campos retornados pela API
-    public Country(Integer idApi, String iso, String shortname, String longname, String callingCode,
+    //API Constructor
+    public Country(Integer id, String iso, String shortname, String longname, String callingCode,
                    Integer status, String culture) {
-        this.idApi = idApi;
+        this.id = id;
         this.iso = iso;
         this.shortname = shortname;
         this.longname = longname;
@@ -88,21 +88,31 @@ public class Country {
         this.culture = culture;
     }
 
+    //Parcelable constructor
+    public Country(Parcel in) {
 
-    public Integer getIdCountry() {
-        return idCountry;
+        String[] dados = new String[0];
+        in.readStringArray(dados);
+
+        this.id = Integer.getInteger(dados[0]);
+        this.iso = dados[1];
+        this.shortname = dados[2];
+        this.longname = dados[3];
+        this.callingCode = dados[4];
+        this.status = Integer.getInteger(dados[5]);
+        this.culture = dados[6];
+        this.visited = Boolean.getBoolean(dados[7]);
+        this.date = new Date(Long.valueOf(dados[8]));
+
     }
 
-    public void setIdCountry(Integer idCountry) {
-        this.idCountry = idCountry;
+
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getIdApi() {
-        return idApi;
-    }
-
-    public void setIdApi(Integer idApi) {
-        this.idApi = idApi;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getIso() {
@@ -172,8 +182,7 @@ public class Country {
     @Override
     public String toString() {
         return "Country{" +
-                "idCountry=" + idCountry +
-                ", idApi=" + idApi +
+                ", id=" + id +
                 ", iso='" + iso + '\'' +
                 ", shortname='" + shortname + '\'' +
                 ", longname='" + longname + '\'' +
@@ -186,4 +195,33 @@ public class Country {
     }
 
 
+    public static final Parcelable.Creator<Country> CREATOR = new Parcelable.Creator<Country>() {
+        public Country createFromParcel(Parcel in) {
+            return new Country(in);
+        }
+
+        public Country[] newArray(int size) {
+            return new Country[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeStringArray(new String[]{
+                String.valueOf(this.id),
+                this.iso,
+                this.shortname,
+                this.longname,
+                this.callingCode,
+                String.valueOf(this.status),
+                this.culture,
+                String.valueOf(this.visited),
+                String.valueOf(this.date.getTime())
+        });
+    }
 }
