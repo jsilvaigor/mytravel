@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">My Travel</string>
+    <string name="account">Account</string>
+    <string name="countries">Countries</string>
+    <string name="visited">Visited</string>
 </resources>

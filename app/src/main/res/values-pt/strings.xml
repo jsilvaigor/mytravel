@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minha Viagem</string>
+    <string name="account">Conta</string>
+    <string name="countries">Países</string>
+    <string name="visited">Visitados</string>
+</resources>
