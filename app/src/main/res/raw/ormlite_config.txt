@@ -2,7 +2,7 @@
 # generated on 2016/09/16 09:20:11
 #
 # --table-start--
-dataClass=com.cedrotech.mytravel.entity.Country
+dataClass=com.cedrotech.mytravel.model.Country
 tableName=countries
 # --table-fields-start--
 # --field-start--

@@ -3,7 +3,7 @@ package com.cedrotech.mytravel.dao;
 import android.content.Context;
 import android.util.Log;
 
-import com.cedrotech.mytravel.entity.Country;
+import com.cedrotech.mytravel.model.Country;
 import com.cedrotech.mytravel.helper.DatabaseHelper;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
@@ -18,18 +18,26 @@ import java.util.List;
  */
 public class CountryDao {
 
-    Context mContext;
-    DatabaseHelper mHelper;
-    Dao<Country, Integer> mDao;
+    private static Context mContext;
+    private DatabaseHelper mHelper;
+    private Dao<Country, Integer> mDao;
+    private static CountryDao mInstance;
 
     public CountryDao(Context mContext) {
-        this.mContext = mContext;
+        CountryDao.mContext = mContext;
         this.mHelper = OpenHelperManager.getHelper(mContext, DatabaseHelper.class);
         try {
             this.mDao = mHelper.getCountryDao();
         } catch (SQLException e) {
             Log.e(this.getClass().toString(), "constructor: " + e.getMessage());
         }
+    }
+
+    public static CountryDao getInstance(Context context) {
+        if (mInstance == null) {
+            mInstance = new CountryDao(context);
+        }
+        return mInstance;
     }
 
     public boolean create(Country mCountry) {
@@ -132,6 +140,20 @@ public class CountryDao {
         }
 
         return countries;
+
+    }
+
+    public Country getById(Integer id) {
+
+        Country found = null;
+
+        try {
+            found = mDao.queryForId(id);
+        } catch (SQLException e) {
+            Log.e(this.getClass().toString(), "getById: " + e.getMessage());
+        }
+
+        return found;
 
     }
 

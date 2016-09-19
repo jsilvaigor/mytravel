@@ -6,7 +6,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.cedrotech.mytravel.constant.ApiConstant;
-import com.cedrotech.mytravel.entity.Country;
+import com.cedrotech.mytravel.model.Country;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;

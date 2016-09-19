@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -52,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout.getTabAt(0).setIcon(R.drawable.account)
                 .getIcon().setColorFilter(color, PorterDuff.Mode.SRC_IN);
 
-        mTabLayout.getTabAt(1).setIcon(R.drawable.airplane_landing);
+        mTabLayout.getTabAt(1).setIcon(R.drawable.flag_outline_variant);
 
-        mTabLayout.getTabAt(2).setIcon(R.drawable.airplane_takeoff);
+        mTabLayout.getTabAt(2).setIcon(R.drawable.flag_variant);
 
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager) {
             @Override

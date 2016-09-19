@@ -21,4 +21,8 @@
         </item>
     </style>
 
+    <style name="MyTravelTheme.CircularProgress" parent="Material.Drawable.CircularProgress">
+        <item name="cpd_strokeColor">@color/accent</item>
+    </style>
+
 </resources>

@@ -3,4 +3,10 @@
     <string name="account">Account</string>
     <string name="countries">Countries</string>
     <string name="visited">Visited</string>
+    <string name="flag">Flag</string>
+    <string name="error_countries">Oops! Error while getting countries.</string>
+    <string name="no_countries">No Countries</string>
+    <string name="oops">Oops!</string>
+    <string name="no_country_found">No country was found.</string>
+    <string name="fetch_countries">Fetching countries</string>
 </resources>

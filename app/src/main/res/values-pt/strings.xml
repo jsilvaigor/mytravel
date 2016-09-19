@@ -4,4 +4,9 @@
     <string name="account">Conta</string>
     <string name="countries">Países</string>
     <string name="visited">Visitados</string>
+    <string name="flag">Bandeira</string>
+    <string name="error_countries">Oops! Erro buscando países</string>
+    <string name="no_countries">Nenhum país</string>
+    <string name="no_country_found">Nenhum país foi encontrado.</string>
+    <string name="fetch_countries">Buscando países</string>
 </resources>

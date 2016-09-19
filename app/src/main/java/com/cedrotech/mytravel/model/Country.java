@@ -1,4 +1,4 @@
-package com.cedrotech.mytravel.entity;
+package com.cedrotech.mytravel.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
