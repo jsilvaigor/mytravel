@@ -9,9 +9,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuInflater;
 
 import com.cedrotech.mytravel.R;
 import com.cedrotech.mytravel.adapter.ViewPagerAdapter;
+import com.cedrotech.mytravel.adapter.VisitedCountryAdapter;
 import com.cedrotech.mytravel.fragment.AccountFragment;
 import com.cedrotech.mytravel.fragment.CountriesFragment;
 import com.cedrotech.mytravel.fragment.VisitedCountriesFragment;
@@ -26,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private Context mContext;
+    private MenuInflater inflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mContext = this;
+        inflater = getMenuInflater();
 
         setContentView(R.layout.activity_main);
 
@@ -41,9 +45,40 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(mViewPager);
 
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (VisitedCountryAdapter.selectMode) {
+                    VisitedCountryAdapter.resetToolBar();
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mViewPager);
         setupTabIcons();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (VisitedCountryAdapter.selectMode) {
+            VisitedCountryAdapter.resetToolBar();
+        } else {
+            super.onBackPressed();
+        }
+
+
     }
 
     private void setupTabIcons() {
@@ -86,4 +121,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public Toolbar getToolbar() {
+        return mToolbar;
+    }
+
+    public Context getContext() {
+        return mContext;
+    }
+
+    public MenuInflater getInflater() {
+        return inflater;
+    }
 }

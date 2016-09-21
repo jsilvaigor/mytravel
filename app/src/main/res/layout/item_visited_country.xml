@@ -6,13 +6,12 @@
 
         <variable
             name="country"
-            type="com.cedrotech.mytravel.viewmodel.CountryViewModel" />
+            type="com.cedrotech.mytravel.viewmodel.VisitedCountryViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/list_item_height"
-        android:onClick="@{country.onClickCountry}">
+        android:layout_height="@dimen/list_item_height">
 
         <ImageView
             android:layout_width="@dimen/avatar_width"
@@ -33,15 +32,16 @@
             android:text="@{country.shortName}"
             android:textSize="@dimen/list_item_font_size" />
 
-        <ImageView
-            android:id="@+id/iv_icon_visited"
-            android:layout_width="@dimen/icon_width"
-            android:layout_height="@dimen/icon_height"
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/ck_country"
+            style="@style/Material.Drawable.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginRight="@dimen/list_item_icon_right_padding"
-            android:gravity="center_vertical"
-            android:src="@drawable/flag_variant"
-            android:visibility="@{country.visitedVisibility}" />
+            android:paddingRight="16dp"
+            android:visibility="gone"
+            android:onClick="@{country.checkboxClick}"/>
+
 
     </android.support.design.widget.CoordinatorLayout>
 

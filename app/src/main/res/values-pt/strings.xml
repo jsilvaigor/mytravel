@@ -9,4 +9,8 @@
     <string name="no_countries">Nenhum país</string>
     <string name="no_country_found">Nenhum país foi encontrado.</string>
     <string name="fetch_countries">Buscando países</string>
+    <string name="selected">selecionados</string>
+    <string name="check_all">Selecionar todos</string>
+    <string name="delete">Apagar</string>
+    <string name="no_countries_selected">No countries selected</string>
 </resources>

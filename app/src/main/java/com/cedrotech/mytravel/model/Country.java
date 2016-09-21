@@ -2,6 +2,7 @@ package com.cedrotech.mytravel.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -91,18 +92,20 @@ public class Country implements Parcelable {
     //Parcelable constructor
     public Country(Parcel in) {
 
-        String[] dados = new String[0];
+        String[] dados = new String[9];
         in.readStringArray(dados);
 
-        this.id = Integer.getInteger(dados[0]);
+        Log.d(getClass().toString(), dados[0]);
+
+        this.id = Integer.decode(dados[0]);
         this.iso = dados[1];
         this.shortname = dados[2];
         this.longname = dados[3];
         this.callingCode = dados[4];
-        this.status = Integer.getInteger(dados[5]);
+        this.status = Integer.decode(dados[5]);
         this.culture = dados[6];
-        this.visited = Boolean.getBoolean(dados[7]);
-        this.date = new Date(Long.valueOf(dados[8]));
+        this.visited = Boolean.parseBoolean(dados[7]);
+        this.date = dados[8] == null ? null : new Date(Long.valueOf(dados[8]));
 
     }
 
@@ -182,7 +185,7 @@ public class Country implements Parcelable {
     @Override
     public String toString() {
         return "Country{" +
-                ", id=" + id +
+                ", id=" + String.valueOf(id) +
                 ", iso='" + iso + '\'' +
                 ", shortname='" + shortname + '\'' +
                 ", longname='" + longname + '\'' +
@@ -212,6 +215,9 @@ public class Country implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+
+        String date = this.date == null ? null : String.valueOf(this.date.getTime());
+
         parcel.writeStringArray(new String[]{
                 String.valueOf(this.id),
                 this.iso,
@@ -221,7 +227,7 @@ public class Country implements Parcelable {
                 String.valueOf(this.status),
                 this.culture,
                 String.valueOf(this.visited),
-                String.valueOf(this.date.getTime())
+                date
         });
     }
 }

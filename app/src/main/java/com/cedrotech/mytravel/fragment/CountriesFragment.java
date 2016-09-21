@@ -13,11 +13,13 @@ import android.view.ViewGroup;
 import com.android.volley.VolleyError;
 import com.cedrotech.mytravel.R;
 import com.cedrotech.mytravel.adapter.CountryAdapter;
+import com.cedrotech.mytravel.dao.CountryDao;
 import com.cedrotech.mytravel.helper.CountryApiHelper;
 import com.cedrotech.mytravel.helper.VolleyHelper;
 import com.cedrotech.mytravel.model.Country;
 import com.cedrotech.mytravel.util.Util;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -57,13 +59,23 @@ public class CountriesFragment extends Fragment {
         getCountries(getContext());
     }
 
-    private void getCountries(Context context) {
+    private void getCountries(final Context context) {
 
         CountryApiHelper.getAllActiveCountries(context, new VolleyHelper.Callback<List<Country>>() {
             @Override
             public void onSuccess(List<Country> obj) {
                 mView.findViewById(R.id.progress).setVisibility(View.GONE);
+                CountryDao dao = CountryDao.getInstance(context);
                 if (obj.size() > 0) {
+
+                    for (int i = 0; i < 10; i++) {
+                        Country c = obj.get(i);
+                        c.setVisited(true);
+                        c.setDate(new Date());
+                        dao.create(c);
+                    }
+
+
                     mCountryAdapter.swapCountries(Util.orderCountryAlphabetically(obj));
                     mRecyclerView.setVisibility(View.VISIBLE);
                 } else {

@@ -9,4 +9,9 @@
     <string name="oops">Oops!</string>
     <string name="no_country_found">No country was found.</string>
     <string name="fetch_countries">Fetching countries</string>
+    <string name="selected">selected</string>
+    <string name="check_all">Check All</string>
+    <string name="delete">Delete</string>
+    <string name="no_countries_selected">No countries selected</string>
+    <string name="all_deleted">All Deleted</string>
 </resources>

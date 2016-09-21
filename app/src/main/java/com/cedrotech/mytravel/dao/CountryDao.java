@@ -129,6 +129,20 @@ public class CountryDao {
 
     }
 
+    public boolean deleteManyById(Collection<Integer> ids) {
+
+        int status = 0;
+
+        try {
+            status = mDao.deleteIds(ids);
+        } catch (SQLException e) {
+            Log.e(this.getClass().toString(), "deleteMany: " + e.getMessage());
+            Log.e(this.getClass().toString(), "deleteMany: " + ids.toString());
+        }
+
+        return status == ids.size();
+    }
+
     public List<Country> getAll() {
 
         List<Country> countries = new ArrayList<>();

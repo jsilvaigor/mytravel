@@ -1,14 +1,18 @@
 package com.cedrotech.mytravel.viewmodel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.cedrotech.mytravel.R;
+import com.cedrotech.mytravel.activity.CountryDetailsActivity;
 import com.cedrotech.mytravel.constant.ApiConstant;
 import com.cedrotech.mytravel.dao.CountryDao;
 import com.cedrotech.mytravel.model.Country;
@@ -73,5 +77,31 @@ public class CountryViewModel extends BaseObservable {
 
     }
 
+    public View.OnClickListener onClickCountry() {
 
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("country", mCountry);
+
+                Intent intent = new Intent(mContext, CountryDetailsActivity.class);
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
+            }
+        };
+
+    }
+
+    public Country getmCountry() {
+        return mCountry;
+    }
+
+    @Override
+    public String toString() {
+        return "CountryViewModel{" +
+                "mCountry=" + mCountry.toString() +
+                '}';
+    }
 }
