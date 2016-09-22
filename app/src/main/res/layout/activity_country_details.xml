@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="country"
-            type="com.cedrotech.mytravel.viewmodel.CountryViewModel" />
+            type="com.cedrotech.mytravel.viewmodel.VisitedCountryViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -26,15 +27,95 @@
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+
         </android.support.design.widget.AppBarLayout>
 
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@color/primary"
+                android:contentDescription="@string/flag"
+                android:gravity="center_vertical"
+                android:scaleType="fitXY"
+                android:src="@drawable/flag_variant"
+                app:highFlagUrl="@{country.flagUrl}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="@{country.country.shortname}"
+                android:textColor="@color/primary_text"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="@{country.country.longname}"
+                android:textColor="@color/secondary_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="@{country.callingCode}"
+                android:textColor="@color/secondary_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="@{country.visitedDate}"
+                android:textColor="@color/secondary_text"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/fab_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="gone"
+            fab:menu_backgroundColor="#ccffffff"
+            fab:menu_fab_label="Menu label"
+            fab:menu_labels_ellipsize="end"
+            fab:menu_labels_singleLine="true">
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@{country.toString}"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/plus"
+            android:visibility="gone" />
+
 
     </android.support.design.widget.CoordinatorLayout>
 

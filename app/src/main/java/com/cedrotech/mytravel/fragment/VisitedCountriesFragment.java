@@ -16,6 +16,7 @@ import com.cedrotech.mytravel.R;
 import com.cedrotech.mytravel.adapter.VisitedCountryAdapter;
 import com.cedrotech.mytravel.dao.CountryDao;
 import com.cedrotech.mytravel.model.Country;
+import com.cedrotech.mytravel.util.Util;
 
 import java.util.List;
 
@@ -63,8 +64,10 @@ public class VisitedCountriesFragment extends Fragment {
 
         CountryDao dao = CountryDao.getInstance(mContext);
 
-        List<Country> mcCountries = dao.getAll();
+        List<Country> mcCountries = Util.orderCountryAlphabetically(dao.getAll());
         mView.findViewById(R.id.progress).setVisibility(View.GONE);
+        mView.findViewById(R.id.no_country).setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.GONE);
         if (mcCountries.size() > 0) {
             mVisitedCountryAdapter.swapCountries(mcCountries);
             mRecyclerView.setVisibility(View.VISIBLE);

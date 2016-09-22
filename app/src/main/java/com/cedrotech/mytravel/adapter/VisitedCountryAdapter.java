@@ -6,14 +6,9 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
-import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -29,16 +24,12 @@ import com.cedrotech.mytravel.activity.CountryDetailsActivity;
 import com.cedrotech.mytravel.activity.MainActivity;
 import com.cedrotech.mytravel.dao.CountryDao;
 import com.cedrotech.mytravel.databinding.ItemVisitedCountryBinding;
-import com.cedrotech.mytravel.fragment.VisitedCountriesFragment;
 import com.cedrotech.mytravel.model.Country;
 import com.cedrotech.mytravel.viewmodel.VisitedCountryViewModel;
-import com.rey.material.app.Dialog;
 import com.rey.material.widget.CheckBox;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by isilva on 18/09/16.
@@ -218,17 +209,17 @@ public class VisitedCountryAdapter extends RecyclerView.Adapter<VisitedCountryAd
 
         if (mSelected.size() > 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(mainActivity.getContext());
-            builder.setTitle("Cuidado!");
+            builder.setTitle(R.string.careful);
             builder.setCancelable(true);
-            builder.setMessage("Deseja apagar os paises selecionados?");
-            builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+            builder.setMessage(R.string.delete_many_message);
+            builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     deleteSelected();
                 }
             });
 
-            builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
@@ -261,6 +252,7 @@ public class VisitedCountryAdapter extends RecyclerView.Adapter<VisitedCountryAd
         mapCountryPosition.clear();
         VisitedCountryAdapter.getRunningInstance().notifyDataSetChanged();
         resetToolBar();
+        CountryAdapter.instance.notifyDataSetChanged();
 
     }
 

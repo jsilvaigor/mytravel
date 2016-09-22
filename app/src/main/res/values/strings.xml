@@ -14,4 +14,16 @@
     <string name="delete">Delete</string>
     <string name="no_countries_selected">No countries selected</string>
     <string name="all_deleted">All Deleted</string>
+    <string name="careful">Careful!</string>
+    <string name="delete_many_message">Do you want to delete the selected countries?</string>
+    <string name="delete_single_message">Do you want to delete the selected visited country?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Updated</string>
+    <string name="add">Added</string>
+    <string name="edit">Edit</string>
+    <string name="calling_code">Calling code</string>
+    <string name="visited_date">Visited in</string>
 </resources>

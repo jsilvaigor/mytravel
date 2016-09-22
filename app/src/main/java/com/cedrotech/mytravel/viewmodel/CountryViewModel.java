@@ -23,9 +23,9 @@ import com.squareup.picasso.Picasso;
  */
 public class CountryViewModel extends BaseObservable {
 
-    private Country mCountry;
-    private Context mContext;
-    private CountryDao mDao;
+    protected Country mCountry;
+    protected Context mContext;
+    protected CountryDao mDao;
 
     public CountryViewModel(Country mCountry, Context mContext) {
         this.mCountry = mCountry;

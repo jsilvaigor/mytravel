@@ -65,17 +65,7 @@ public class CountriesFragment extends Fragment {
             @Override
             public void onSuccess(List<Country> obj) {
                 mView.findViewById(R.id.progress).setVisibility(View.GONE);
-                CountryDao dao = CountryDao.getInstance(context);
                 if (obj.size() > 0) {
-
-                    for (int i = 0; i < 10; i++) {
-                        Country c = obj.get(i);
-                        c.setVisited(true);
-                        c.setDate(new Date());
-                        dao.create(c);
-                    }
-
-
                     mCountryAdapter.swapCountries(Util.orderCountryAlphabetically(obj));
                     mRecyclerView.setVisibility(View.VISIBLE);
                 } else {

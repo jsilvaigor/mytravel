@@ -38,4 +38,5 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-core:5.0'
     compile 'com.j256.ormlite:ormlite-android:5.0'
     compile 'com.github.rey5137:material:1.2.4'
+    compile 'com.github.clans:fab:1.6.4'
 }

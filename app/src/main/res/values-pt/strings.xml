@@ -13,4 +13,14 @@
     <string name="check_all">Selecionar todos</string>
     <string name="delete">Apagar</string>
     <string name="no_countries_selected">No countries selected</string>
+    <string name="careful">Cuidado!</string>
+    <string name="delete_many_message">Deseja apagar os países selecionados?</string>
+    <string name="delete_single_message">Deseja apagar a visita ao pais?</string>
+    <string name="yes">SIM</string>
+    <string name="cancel">CANCELAR</string>
+    <string name="update">Atualizado</string>
+    <string name="add">Adicionado</string>
+    <string name="edit">Editar</string>
+    <string name="calling_code">Codigo de ligação</string>
+    <string name="visited_date">Visitado em</string>
 </resources>

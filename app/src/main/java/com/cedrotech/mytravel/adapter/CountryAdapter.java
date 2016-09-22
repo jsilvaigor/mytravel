@@ -27,10 +27,11 @@ import java.util.List;
  */
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> {
 
-    public List<Country> mCountries = new ArrayList<>();
+    private List<Country> mCountries = new ArrayList<>();
+    public static CountryAdapter instance;
 
     public CountryAdapter() {
-
+        instance = this;
     }
 
     @Override
@@ -70,7 +71,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
 
             iconVisited = (ImageView) binding.getRoot().findViewById(R.id.iv_icon_visited);
             iconVisited.setColorFilter(ContextCompat.getColor(binding.getRoot().getContext(),
-                    R.color.primary_dark), PorterDuff.Mode.SRC_IN);
+                    R.color.accent), PorterDuff.Mode.SRC_IN);
 
 
         }
