@@ -129,7 +129,4 @@ public class MainActivity extends AppCompatActivity {
         return mContext;
     }
 
-    public MenuInflater getInflater() {
-        return inflater;
-    }
 }

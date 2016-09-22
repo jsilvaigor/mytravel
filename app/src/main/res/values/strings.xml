@@ -26,4 +26,8 @@
     <string name="edit">Edit</string>
     <string name="calling_code">Calling code</string>
     <string name="visited_date">Visited in</string>
+    <string name="facebook_app_id">730667717072625</string>
+    <string name="logged">Logged</string>
+    <string name="logout">Logout</string>
+    <string name="logoff">Logged out</string>
 </resources>

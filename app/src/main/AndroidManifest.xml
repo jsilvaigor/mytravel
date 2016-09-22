@@ -12,6 +12,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MyTravelTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -23,6 +27,13 @@
         </activity>
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.CountryDetailsActivity" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activity.LoginActivity"/>
     </application>
+
 
 </manifest>

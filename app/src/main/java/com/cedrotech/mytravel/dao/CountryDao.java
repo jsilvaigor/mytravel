@@ -115,6 +115,15 @@ public class CountryDao {
         return status == 1;
     }
 
+    public void deleteAll() {
+
+        List<Country> mCountries = getAll();
+
+        if (mCountries.size() > 0) {
+            deleteMany(mCountries);
+        }
+    }
+
     public boolean deleteMany(Collection<Country> countries) {
 
         int status = 0;
@@ -174,6 +183,7 @@ public class CountryDao {
     public void close() {
         mHelper.close();
         mDao = null;
+        mInstance = null;
     }
 
 

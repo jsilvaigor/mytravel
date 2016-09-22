@@ -3,6 +3,8 @@ package com.cedrotech.mytravel;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.stetho.Stetho;
 
 /**
@@ -13,6 +15,9 @@ public class MyTravel extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
 
         if (BuildConfig.DEBUG) {
             Stetho.initialize(

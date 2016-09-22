@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="texto"
+            name="nome"
+            type="String" />
+
+        <variable
+            name="email"
             type="String" />
     </data>
 
@@ -19,10 +24,50 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".activity.MainActivity">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="124dp"
+            android:layout_height="124dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/account"
+            app:civ_border_color="@color/primary_dark"
+            app:civ_border_width="2dp" />
+
         <TextView
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{texto}" />
+            android:layout_below="@id/profile_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="@{nome}"
+            android:textColor="@color/primary_text"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="@{email}"
+            android:textColor="@color/secondary_text"
+            android:textSize="18sp" />
+
+        <com.rey.material.widget.Button
+            android:id="@+id/bt_logout"
+            style="@style/FacebookLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="100dp"
+            android:text="@string/logout"
+            app:rd_enable="true" />
+
+
     </RelativeLayout>
 
 </layout>

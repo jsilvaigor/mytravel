@@ -24,6 +24,7 @@ import com.cedrotech.mytravel.activity.CountryDetailsActivity;
 import com.cedrotech.mytravel.activity.MainActivity;
 import com.cedrotech.mytravel.dao.CountryDao;
 import com.cedrotech.mytravel.databinding.ItemVisitedCountryBinding;
+import com.cedrotech.mytravel.fragment.VisitedCountriesFragment;
 import com.cedrotech.mytravel.model.Country;
 import com.cedrotech.mytravel.viewmodel.VisitedCountryViewModel;
 import com.rey.material.widget.CheckBox;
@@ -251,6 +252,7 @@ public class VisitedCountryAdapter extends RecyclerView.Adapter<VisitedCountryAd
         mCountries = dao.getAll();
         mapCountryPosition.clear();
         VisitedCountryAdapter.getRunningInstance().notifyDataSetChanged();
+        VisitedCountriesFragment.getCountries(mainActivity.getContext());
         resetToolBar();
         CountryAdapter.instance.notifyDataSetChanged();
 
