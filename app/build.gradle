@@ -16,6 +16,7 @@ android {
         compileOptions {
             incremental false
         }
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
